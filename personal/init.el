@@ -112,6 +112,7 @@
 (global-set-key (kbd "C-R") 'replace-string)
 (global-set-key (kbd "C-T") 'goto-line)
 (global-set-key (kbd "C-O") 'other-window)
+(global-unset-key (kbd "C-x C-c"))
 
 ;; Marmalade
 (depend 'package
@@ -121,3 +122,12 @@
 
 ;; Clojure
 (require 'clojure-mode)
+
+; Slime
+(setq inferior-lisp-program "/path/to/lisp-executable")
+(add-to-list 'load-path "/usr/share/emacs/site-lisp/slime/")
+(require 'slime)
+(slime-setup)
+(add-hook 'slime-repl-mode-hook (lambda () (paredit-mode +1)))
+
+(add-to-list 'auto-mode-alist '("/*.md$" . markdown-mode))
