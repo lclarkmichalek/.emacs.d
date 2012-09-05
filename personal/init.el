@@ -131,3 +131,11 @@
 (add-hook 'slime-repl-mode-hook (lambda () (paredit-mode +1)))
 
 (add-to-list 'auto-mode-alist '("/*.md$" . markdown-mode))
+
+(global-set-key (kbd "s-f") 'forward-word)
+(global-set-key (kbd "s-b") 'backward-word)
+
+;; Stops flymake opening modal dialougs
+(defun flymake-display-warning (warning)
+  "Display a warning to the user, using lwarn"
+  (message warning))
